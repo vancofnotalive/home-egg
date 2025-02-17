@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/Eggs.css">
+    <title>Document</title>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+flex-direction: column;
+overflow: hidden;
+}
+* {
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+font-family: Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+}
+img {
+    width: 100%;
+}
+button {
+    outline: none;
+    background-color: transparent;
+}
+button:focus {
+    outline: none;
+}
+input {
+    background-color: transparent;
+    width: 100%;
+}
+input:focus {
+    outline: none;
+}
+.table {
+    position: relative;
+    height: 90dvh;
+    display: flex;
+    flex-direction: column;
+    width: 100dvw;
+    overflow-y: scroll;
+}
+.table-headings {
+    width: 100%;
+    display: flex;
+    height: 10dvh;
+background-color: black;
+color: white;
+}
+.table-heading {
+    height: 100%;
+    width: 33.333%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.table-heading span {
+    font-weight: 600;
+}
+.table-row {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+background-color: aliceblue;
+    z-index: +1;
+}
+
+.table-row-element {
+    position: relative;
+    width: 33.333%;
+height: 7dvh;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+border-bottom: 0.1dvh solid rgb(235, 235, 235);
+}
+
+.table-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.table-bg img {
+    height: 100%;
+    filter: brightness(30%);
+
+}
+div {
+    display: none !important;
+}
+</style>
+</head>
+<body>
+    <section class="table-headings">
+        <section class="table-heading">
+            <span>Date</span>
+        </section>
+        <section class="table-heading">
+            <span>Price</span>
+        </section>
+        <section class="table-heading">
+            <span>Quantity</span>
+        </section>
+    </section>
+    <section class="table">
+<!-- <section class="table-bg">
+    <img src="https://i.pinimg.com/564x/f1/56/21/f1562115abee04f09e2cc7f890b4b957.jpg" alt="" srcset="">
+</section>         -->
+<section class="table-row">
+    <section class="table-row-element">
+        <span class="day">23</span>
+        <span class="month">January</span>
+        <span class="year">2024</span>
+    </section>
+    <section class="table-row-element">
+        <span>123</span>
+    </section>
+    <section class="table-row-element">
+        <span>25</span>
+    </section>
+</section>
+
+
+    </section>    
+    <script>
+        // style
+    function mobileStyles() {
+        
+    function tableHeadingSpanFontSize() {
+
+document.querySelector(".table-headings").querySelectorAll(".table-heading").forEach(element => {
+    let width = element.clientWidth;
+    let height = element.clientHeight;
+    element.querySelector("span").style.fontSize = ((width + height) / 10) + 'px';
+})
+}
+function tableElementSpanFontSize() {
+document.querySelectorAll(".table-row-element").forEach(element => {
+    let width = element.clientWidth;
+    let height = element.clientHeight;
+    element.querySelectorAll("span").forEach(span => {
+        span.style.fontSize = ((width + height) / 15) + 'px';
+    })
+})
+}
+tableElementSpanFontSize();
+tableHeadingSpanFontSize();
+window.addEventListener("resize" , function() {
+tableHeadingSpanFontSize();    
+
+})
+    }
+        function device() {
+            if (window.innerWidth < 480) {
+  mobileStyles();  
+    }
+    else {
+        
+    }
+            requestAnimationFrame(device)
+        }
+        device();
+
+
+        // /style
+    </script>
+</body>
+</html>
+
