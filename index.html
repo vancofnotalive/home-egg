@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/Eggs.css">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
     body {
     margin: 0;
@@ -13,6 +14,8 @@
     justify-content: center;
 flex-direction: column;
 overflow: hidden;
+height: 100dvh;
+width: 100dvw;
 }
 * {
     flex-shrink: 0 !important;
@@ -43,7 +46,7 @@ input:focus {
 }
 .table {
     position: relative;
-    height: 90dvh;
+    height: 80dvh;
     display: flex;
     flex-direction: column;
     width: 100dvw;
@@ -99,6 +102,28 @@ border-bottom: 0.1dvh solid rgb(235, 235, 235);
 div {
     display: none !important;
 }
+.table-headings:nth-child(3) .table-heading:first-child {
+background-color: rgb(230, 230, 230);
+}
+.table-headings:nth-child(3) .table-heading {
+ background-color: rgb(245, 245, 245) ;
+ color: #000;   
+ font-weight: 600;
+}
+.total-amounts {
+}
+.total-eggs {
+    display: flex;
+}
+.total-price::before {
+content: "₹";
+}
+.total-eggs::after {
+content: "egg";
+    font-size: 80%;
+color: rgb(0, 0, 0 , 0.8);
+}
+
 </style>
 </head>
 <body>
@@ -127,11 +152,23 @@ div {
         <span>123</span>
     </section>
     <section class="table-row-element">
-        <span>25</span>
+          <span>25</span> 
     </section>
 </section>
 
 
+
+    </section>
+    <section class="table-headings total-amounts">
+        <section class="table-heading">
+            <span>Total</span>
+        </section>
+        <section class="table-heading total-price">
+            <span>number</span>
+        </section>
+        <section class="table-heading total-eggs">
+               <span>number</span>  
+        </section>
     </section>    
     <script>
         // style
@@ -149,8 +186,12 @@ function tableElementSpanFontSize() {
 document.querySelectorAll(".table-row-element").forEach(element => {
     let width = element.clientWidth;
     let height = element.clientHeight;
+    let fontSize = ((width + height) / 15);
     element.querySelectorAll("span").forEach(span => {
-        span.style.fontSize = ((width + height) / 15) + 'px';
+        span.style.fontSize = fontSize + 'px';
+    })
+    element.querySelectorAll("i").forEach(i => {
+        i.style.fontSize = fontSize + 'px';
     })
 })
 }
@@ -171,8 +212,24 @@ tableHeadingSpanFontSize();
             requestAnimationFrame(device)
         }
         device();
+let amount = 0;
+let totalEggs = 0;
+let dateLeft = document.querySelectorAll(".table-row-element")[0].getClientRects()[0].left;
+let eggLeft = document.querySelectorAll(".table-row-element")[2].getClientRects()[0].left;
+let priceLeft = document.querySelectorAll(".table-row-element")[1].getClientRects()[0].left;
+document.querySelectorAll(".table-row-element").forEach(element => {
+   let leftFactor = element.getClientRects()[0].left;
+    if (leftFactor > dateLeft  && leftFactor < eggLeft) {
+        
+       amount += parseInt(element.querySelector("span").innerText)
+    }
+    else if (leftFactor > dateLeft && leftFactor > priceLeft)  {
+        totalEggs += parseInt(element.querySelector("span").innerText)
+    }
 
-
+})
+document.querySelector(".total-price").querySelector("span").innerText = amount;
+document.querySelector(".total-eggs").querySelector("span").innerText = totalEggs;
         // /style
     </script>
 </body>
