@@ -129,6 +129,25 @@
             font-size: 70%;
 
         }
+        .outdated {
+            filter: brightness(50%);
+        }
+        .total-text span::after {
+            content: "Total";
+        }
+        .outdated .table-date {
+            background-color: rgb(0, 255, 200);
+            justify-content: space-evenly;
+        }
+        .outdated .total-text span::after {
+            content: "Paid";
+        }
+        .outdated .total-text {
+            background-color: rgb(0, 255, 200) !important;
+        }
+        .outdated .table-total {
+            filter: brightness(50%);
+        }
     </style>
 </head>
 
@@ -137,6 +156,39 @@
 to make a new row make a new role in table-content section -->
     <section class="tables">
         <section class="table">
+            <section class="table-date">
+                <span></span>
+                <span></span>
+            </section>
+            <section class="table-headings">
+                <section class="table-heading">
+                    <span>Date</span>
+                </section>
+                <section class="table-heading">
+                    <span>Price</span>
+                </section>
+                <section class="table-heading">
+                    <span>Quantity</span>
+                </section>
+            </section>
+            <section class="table-content">
+                
+                <!-- contents end -->
+            </section>
+            <section class="table-total">
+                <section class="table-row-element total-text">
+                    <span></span>
+                </section>
+                <section class="table-row-element price-text">
+                    <span></span>
+                </section>
+                <section class="table-row-element eggs-text">
+                    <span></span>
+                </section>
+            </section>
+                <!-- table end -->
+        </section>
+        <section class="table outdated">
             <section class="table-date">
                 <span></span>
                 <span></span>
@@ -365,7 +417,7 @@ to make a new row make a new role in table-content section -->
             </section>
             <section class="table-total">
                 <section class="table-row-element total-text">
-                    <span>Total</span>
+                    <span></span>
                 </section>
                 <section class="table-row-element price-text">
                     <span></span>
